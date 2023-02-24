@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -7,29 +6,33 @@ class App extends Component {
     super();
 
     this.state = {
-      your_name: 'Eric'
+      monsters: [],
+      monster_search_string: '',
     };
+  }
+  componentDidMount(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(users => this.setState({ monsters: users }));
+  }
+
+  onSearchChange = (event) => {
+    const monster_search_string = event.target.value.toLowerCase();
+    this.setState(
+      () => {
+        return { monster_search_string }
+      });
   }
 
   render() {
+    const { monsters, monster_search_string } = this.state;
+    const { onSearchChange } = this;
+    const filtered_monsters = monsters.filter(monster => monster.name.toLowerCase().includes(monster_search_string));
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hi {this.state.your_name}!
-          </p>
-          <button onClick={() => {
-            this.setState(
-              () => {
-                return {your_name: 'Bobby'}
-              },
-              () => {
-                console.log(this.state.your_name)
-              }
-             )
-          }}>Change Name</button>
-        </header>
+        <input className='search-box' type="search" placeholder="search monsters" onChange={onSearchChange} />
+        {filtered_monsters.map(monster => <h1 key={monster.id}>{monster.name}</h1>)}
       </div>
     );
   };
