@@ -1,7 +1,7 @@
 import { async } from "@firebase/util";
 import { getRedirectResult } from "firebase/auth";
-import { signInWithGoogle, createUserDocumentFromAuth, signInWithGoogleRedirect } from "../../utils/firebase.utils";
-
+import SignUpForm from "../../components/signup-form/signup-form.component";
+import { signInWithGoogle, createUserDocumentFromAuth, signInWithGoogleRedirect,  } from "../../utils/firebase.utils";
 
 const SignIn = () => {
     const logInGoogleUser = async () => {
@@ -14,12 +14,17 @@ const SignIn = () => {
         console.log(user)
     };
 
+
     return (
         <div>
-            <h1>Sign In</h1>
-            <button onClick={logInGoogleUser}>
-                <span>Sign In with Google</span>
-            </button>
+            <div>
+                <h1>Sign In</h1>
+                <button onClick={logInGoogleUser}>
+                    <span>Sign In with Google</span>
+                </button>
+
+            </div>
+            <SignUpForm />
         </div>
     )
 }
