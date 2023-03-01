@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase.utils";
-import FormInputField from '../form-input/form-input.component';
-import InputButton from "../form-input/button.component";
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../../utils/firebase.utils";
+import FormInputField from '../../form-input/form-input.component';
+import InputButton from "../../form-input/button.component";
 
 import './signup-form.styles.scss';
 
@@ -25,7 +25,7 @@ const SignUpForm = () => {
         setFormFields(defaultFormFields);
     }
 
-    const handleSubmit = async (event) => {
+    const handleSignUpSubmit = async (event) => {
         event.preventDefault();
         if (password !== confirmPassword) {
             alert('Passwords do not match');
@@ -50,23 +50,20 @@ const SignUpForm = () => {
         <div className="sign-up-container">
             <h2>Don't Have an account?</h2>
             <span>Sign up with Email</span>
-            <form action="" onSubmit={handleSubmit}>
+            <form action="" onSubmit={handleSignUpSubmit}>
                 <FormInputField type="text" name="displayName"
                     value={displayName} handleChange={handleChange}
-                    label="Display Name" required={true} />
-                <label htmlFor="">Email</label>
-                    <FormInputField type="email" autoComplete="email username"
-                        onChange={handleChange} name="email" label="Email"
-                        value={email} required={true} />
-                <label htmlFor="">Password</label>
-                    <FormInputField type="password" autoComplete="new-password"
-                        onChange={handleChange} name="password" label="Password"
-                        value={password} required={true} />
-                <label htmlFor="">Confirm Password</label>
-                    <FormInputField type="password" autoComplete="confirm-new-password"
-                        onChange={handleChange} name="confirmPassword" label="Confirm Password"
-                        value={confirmPassword} required={true} />
-                <InputButton children='Sign Up' buttonType='default' />
+                    label="Display Name" required={true} defaultValue=''/>
+                <FormInputField type="email" autoComplete="username"
+                    handleChange={handleChange} name="email" label="Email"
+                    value={email} required={true} defaultValue=''/>
+                <FormInputField type="password" autoComplete="new-password"
+                    handleChange={handleChange} name="password" label="Password"
+                    value={password} required={true} defaultValue=''/>
+                <FormInputField type="password" autoComplete="confirm-new-password"
+                    handleChange={handleChange} name="confirmPassword" label="Confirm Password"
+                    value={confirmPassword} required={true} defaultValue=''/>
+                <InputButton children='Sign Up' buttonType='default' defaultValue=''/>
             </form>
         </div>
     )
