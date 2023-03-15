@@ -18,7 +18,6 @@ const SignUpForm = () => {
     const handleChange = (event) => {
         const {name, value} = event.target;
         setFormFields({...formFields, [name]: value})
-
     }
 
     const resetForm = () => {
@@ -52,18 +51,18 @@ const SignUpForm = () => {
             <span>Sign up with Email</span>
             <form action="" onSubmit={handleSignUpSubmit}>
                 <FormInputField type="text" name="displayName"
-                    value={displayName} handleChange={handleChange}
-                    label="Display Name" required={true} defaultValue=''/>
+                    defaultValue={displayName} onChange={handleChange}
+                    label="Display Name" required={true} />
                 <FormInputField type="email" autoComplete="username"
-                    handleChange={handleChange} name="email" label="Email"
-                    value={email} required={true} defaultValue=''/>
+                    onChange={handleChange} name="email" label="Email"
+                    defaultValue={email} required={true} />
                 <FormInputField type="password" autoComplete="new-password"
-                    handleChange={handleChange} name="password" label="Password"
-                    value={password} required={true} defaultValue=''/>
+                    onChange={handleChange} name="password" label="Password"
+                    defaultValue={password} required={true} />
                 <FormInputField type="password" autoComplete="confirm-new-password"
-                    handleChange={handleChange} name="confirmPassword" label="Confirm Password"
-                    value={confirmPassword} required={true} defaultValue=''/>
-                <InputButton children='Sign Up' buttonType='default' defaultValue=''/>
+                    onChange={handleChange} name="confirmPassword" label="Confirm Password"
+                    defaultValue={confirmPassword} required={true} />
+                <InputButton children='Sign Up' buttonType='default'/>
             </form>
         </div>
     )

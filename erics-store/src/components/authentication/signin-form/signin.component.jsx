@@ -6,8 +6,8 @@ import InputButton from '../../form-input/button.component';
 import FormInputField from '../../form-input/form-input.component';
 
 const defaultSignInFormFields = {
-    email: '',
-    password: '',
+    email: 'eric@test.com',
+    password: '1234$asdf!X',
 }
 const SignInForm = () => {
 
@@ -19,18 +19,15 @@ const SignInForm = () => {
         const user = await createUserDocumentFromAuth(response.user);
     }
 
-    const handleChange = (event) => {
+    const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormFields({ ...formFields, [name]: value })
+        console.log(formFields)
     }
 
     const resetForm = () => {
         setFormFields(defaultSignInFormFields);
     }
-
-    const handleSignInWithGoogle = () => {
-        console.log('Sign in with Google');
-    };
 
     const handleSignInSubmit = async (event) => {
         event.preventDefault();
@@ -55,13 +52,13 @@ const SignInForm = () => {
             <span>Sign in with your email and password</span>
 
             <form onSubmit={handleSignInSubmit}>
-                <FormInputField name='email' type='email' value={email}
+                <FormInputField name='email' type='email' defaultValue={email}
                     autoComplete="username" label='Email'
-                    handleChange={handleChange} required defaultValue=''/>
+                    onChange={handleInputChange} required />
 
-                <FormInputField name='password' type='password' value={password}
+                <FormInputField name='password' type='password' defaultValue={password}
                     autoComplete="password" label='Password'
-                     handleChange={handleChange} required defaultValue=''/>
+                    onChange={handleInputChange} required />
             <div className="buttons-container">
                     <InputButton children='Sign In' buttonType='default' />
                     <InputButton children='Google Sign In' buttonType='google' type='button' onClick={logInGoogleUser} />

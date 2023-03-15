@@ -8,7 +8,7 @@ const FormInputField = ({ handleChange, label, ...otherProps }) => {
             <input className="form-input" {...otherProps} />
             {/* If Label exists, then render it */}
             { label &&
-                (<label className={`${otherProps.value.length ? 'shrink' : ''} form-input-label`}>{label}</label>)
+                (<label className={`${otherProps.defaultValue.length ? 'shrink' : ''} form-input-label`}>{label}</label>)
             }
 
         </div>
