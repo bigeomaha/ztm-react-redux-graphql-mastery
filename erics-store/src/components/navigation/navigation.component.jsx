@@ -3,12 +3,14 @@ import { Fragment, useContext } from "react";
 import './navigation.styles.scss';
 import { ReactComponent as StoreLogo} from '../../assets/store-logo.svg';
 import { UserContext } from "../../contexts/user.context";
+import { CartViewContext } from "../../contexts/shoppingcart.context";
 import { signOutUser } from "../../utils/firebase.utils";
-
+import { CartIcon } from "../cart-icon/cart-icon.component";
+import { CartDropdown } from "../cart-dropdown/cart-dropdown.component";
 
 const Navigation = () => {
     const {currentUser,setCurrentUser} = useContext(UserContext);
-
+    const {is_cart_visible, setCartVisible} = useContext(CartViewContext);
     return (
         <Fragment>
             <div className='navigation'>
@@ -25,7 +27,9 @@ const Navigation = () => {
                             <Link to='/authentication' className='nav-link'>Sign In</Link>
                         )
                     }
+                    { currentUser && <CartIcon />}
                 </div>
+                {is_cart_visible && <CartDropdown />}
             </div>
             <Outlet />
         </Fragment>
