@@ -4,14 +4,14 @@ import { useContext } from "react";
 import { CartViewContext } from "../../contexts/shoppingcart.context";
 
 export const CartIcon = () => {
-  const { is_cart_visible, setCartVisible } = useContext(CartViewContext);
+  const { is_cart_visible, setCartVisible, total_items } = useContext(CartViewContext);
   const toggleCartPopup = () => {
     setCartVisible(!is_cart_visible);
   };
   return (
     <div className="cart-icon-container" onClick={toggleCartPopup}>
       <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">0</span>
+      <span className="item-count">{total_items}</span>
     </div>
   );
 };

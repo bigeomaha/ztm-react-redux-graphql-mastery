@@ -3,6 +3,7 @@ import Home from "./routes/home/home.route";
 import Authentication from "./routes/authentication/authentication.route";
 import Navigation from "./components/navigation/navigation.component";
 import Shop from "./routes/shop/shop.route";
+import UserBasket from "./routes/user-basket/user-basket.route";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/authentication' element={<Authentication />} />
+        <Route path='/shopping-cart' element={<UserBasket />} />
       </Route>
     </Routes>
   );
