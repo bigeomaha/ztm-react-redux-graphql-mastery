@@ -4,7 +4,7 @@ import './navigation.styles.scss';
 import { ReactComponent as StoreLogo} from '../../assets/store-logo.svg';
 import { UserContext } from "../../contexts/user.context";
 import { CartViewContext } from "../../contexts/shoppingcart.context";
-import { signOutUser } from "../../utils/firebase.utils";
+import { signOutUser } from "../../utils/firebase-auth.utils";
 import { CartIcon } from "../cart-icon/cart-icon.component";
 import { CartDropdown } from "../cart-dropdown/cart-dropdown.component";
 
