@@ -1,3 +1,5 @@
+Live hosted site: [https://main--remarkable-dusk-38072b.netlify.app/shop/hats](https://main--remarkable-dusk-38072b.netlify.app/shop/hats)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
