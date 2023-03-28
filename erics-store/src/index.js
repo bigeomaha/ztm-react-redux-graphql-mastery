@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { UserProvider } from './contexts/user.context';
-import { ProductsProvider } from './contexts/products.context';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+
 import { CartViewProvider } from './contexts/shoppingcart.context';
 
 import './index.scss';
@@ -13,13 +14,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserProvider>
-        <ProductsProvider>
-          <CartViewProvider>
-              <App />
-          </CartViewProvider>
-        </ProductsProvider>
-      </UserProvider>
+      <Provider store={store}>
+        <CartViewProvider>
+          <App />
+        </CartViewProvider>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

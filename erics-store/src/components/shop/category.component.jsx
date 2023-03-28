@@ -1,17 +1,15 @@
 import { useContext,useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
-import { ProductsContext } from "../../contexts/products.context";
+import { ProductsContext } from "../../contexts/products.context.jsx.old";
 import ProductCard from "../product-card/product-card.component";
 import './shop-drilldown.styles.scss';
+import { selectProducts } from "../../store/products/products.selector.js";
+import { useSelector } from "react-redux";
 
 const CategoryView = () => {
     const {category} = useParams();
-    const { product_catalog } = useContext(ProductsContext);
-    const [products, setProducts] = useState(product_catalog[category]);
-
-    useEffect(() => {
-        setProducts(product_catalog[category]);
-    }, [category, product_catalog])
+    const { product_catalog } = useSelector(selectProducts);
+    const products = product_catalog[category];
 
     return (
         <div className='category-details-container' key={category}>
