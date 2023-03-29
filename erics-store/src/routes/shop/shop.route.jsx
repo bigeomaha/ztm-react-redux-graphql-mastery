@@ -5,14 +5,16 @@ import { getCategoriesAndDocuments } from '../../utils/product-store.utils';
 import {useDispatch} from 'react-redux'
 import CategoriesView from '../../components/shop/categories.component';
 import CategoryView from '../../components/shop/category.component';
+import { setProductCatalog } from '../../store/products/products.actions';
+
 
 const Shop = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        let loadData = async () => {
-            let initial_products = await getCategoriesAndDocuments();
-            dispatch({ type: "SET_PRODUCTS", payload: initial_products });
+        const loadData = async () => {
+            const initial_products = await getCategoriesAndDocuments();
+            dispatch(setProductCatalog(initial_products));
         }
         loadData();
     }, [])

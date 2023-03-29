@@ -5,8 +5,10 @@ import { selectProducts } from "../../store/products/products.selector.js";
 import { useSelector } from "react-redux";
 
 const CategoriesView = () => {
-    const {product_catalog} = useSelector(selectProducts);
+    const product_catalog = useSelector(selectProducts);
     return (
+        <>
+        {
         Object.keys(product_catalog).map((category_title) => (
             <div className='category-preview-container' key={category_title}>
                 <h2 className='title'>
@@ -25,6 +27,9 @@ const CategoriesView = () => {
                 </div>
             </div>
         ))
+        }
+        </>
+
     )
 }
 
