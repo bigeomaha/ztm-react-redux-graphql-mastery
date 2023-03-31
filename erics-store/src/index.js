@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 
-import { CartViewProvider } from './contexts/shoppingcart.context';
-
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -15,9 +13,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <CartViewProvider>
           <App />
-        </CartViewProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

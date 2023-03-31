@@ -1,13 +1,19 @@
 import "./cart-icon.styles.scss";
 import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
-import { useContext } from "react";
-import { CartViewContext } from "../../contexts/shoppingcart.context";
+import { useDispatch, useSelector } from "react-redux";
+import { selectShoppingCartToggle, selectShoppingCartTotalItems } from "../../store/shoppingcart/shopcart.selector";
+import { setCartVisible } from "../../store/shoppingcart/shopcart.actions";
+
 
 export const CartIcon = () => {
-  const { is_cart_visible, setCartVisible, total_items } = useContext(CartViewContext);
+  const dispatch = useDispatch();
+  const total_items = useSelector(selectShoppingCartTotalItems);
+  const is_cart_visible  = useSelector(selectShoppingCartToggle);
+
   const toggleCartPopup = () => {
-    setCartVisible(!is_cart_visible);
+    dispatch(setCartVisible(!is_cart_visible));
   };
+
   return (
     <div className="cart-icon-container" onClick={toggleCartPopup}>
       <ShoppingIcon className="shopping-icon" />

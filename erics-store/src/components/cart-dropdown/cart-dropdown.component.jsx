@@ -1,17 +1,20 @@
 import "./cart-dropdown.styles.scss";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartViewContext } from "../../contexts/shoppingcart.context";
 import Button from "../form-input/button.component";
 import CartItem from "../cart-item/cart-item.component";
+import { useDispatch, useSelector} from "react-redux";
+import { selectShoppingCartItems, selectShoppingCartToggle } from "../../store/shoppingcart/shopcart.selector";
+import { setCartVisible } from "../../store/shoppingcart/shopcart.actions";
 
 export const CartDropdown = () => {
-    const {cart_items} =useContext(CartViewContext)
-    const {is_cart_visible, setCartVisible} = useContext(CartViewContext)
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const cart_items = useSelector(selectShoppingCartItems);
+    const is_cart_visible  = useSelector(selectShoppingCartToggle);
+
     const handleCheckout = () => {
-        setCartVisible(!is_cart_visible);
+        dispatch(setCartVisible(!is_cart_visible));
         navigate('/shopping-cart');
     }
 

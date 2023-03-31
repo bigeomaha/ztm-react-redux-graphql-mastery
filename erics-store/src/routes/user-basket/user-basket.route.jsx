@@ -1,13 +1,14 @@
 import './user-basket.styles.scss';
-import { useContext } from 'react';
-import { CartViewContext } from '../../contexts/shoppingcart.context';
+import { useDispatch, useSelector } from "react-redux";
+import { selectShoppingCartItems, selectShoppingCartTotalPrice } from "../../store/shoppingcart/shopcart.selector";
+import { addItemToCart, subtractItemFromCart, deleteItemFromCart } from "../../store/shoppingcart/shopcart.actions";
 
 
-const _cartItem = (item) => {
-    const { addItemToCart, subtractItemFromCart, deleteItemFromCart } = useContext(CartViewContext);
-    const incrementHandler  = () => addItemToCart(item);
-    const decrementHandler = () => subtractItemFromCart(item);
-    const deleteHandler = () => deleteItemFromCart(item);
+const _cartItem = (cart_items, item) => {
+    const dispatch = useDispatch();
+    const deleteHandler = () => dispatch(deleteItemFromCart(cart_items, item));
+    const incrementHandler = () => dispatch(addItemToCart(cart_items, item));
+    const decrementHandler = () => dispatch(subtractItemFromCart(cart_items, item));
 
     return (
         <div className='checkout-item-container' key={item.id}>
@@ -28,8 +29,9 @@ const _cartItem = (item) => {
 }
 
 const UserBasket = () => {
-    const { cart_items, setCartItems } = useContext(CartViewContext);
-    const { cart_total, setCartTotal } = useContext(CartViewContext);
+
+    const cart_items = useSelector(selectShoppingCartItems);
+    const cart_total = useSelector(selectShoppingCartTotalPrice);
 
     return (
         <div className="user-basket">
@@ -44,7 +46,7 @@ const UserBasket = () => {
                     <div className='header-block'></div>
                 </div>
                 {cart_items.map((item) => (
-                    _cartItem(item)
+                    _cartItem(cart_items, item)
                 ))}
                 <div className="total">
                     Total ${cart_total}

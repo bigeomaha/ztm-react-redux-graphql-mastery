@@ -1,16 +1,18 @@
 import { Outlet, Link } from "react-router-dom";
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import { useSelector} from "react-redux"
 import './navigation.styles.scss';
 import { ReactComponent as StoreLogo} from '../../assets/store-logo.svg';
-import { CartViewContext } from "../../contexts/shoppingcart.context";
 import { signOutUser } from "../../utils/firebase-auth.utils";
 import { CartIcon } from "../cart-icon/cart-icon.component";
 import { CartDropdown } from "../cart-dropdown/cart-dropdown.component";
+import {selectShoppingCartToggle} from "../../store/shoppingcart/shopcart.selector"
 
 const Navigation = () => {
     const currentUser = useSelector(state => state.user.currentUser)
-    const {is_cart_visible, setCartVisible} = useContext(CartViewContext);
+    const is_cart_visible = useSelector(selectShoppingCartToggle);
+
+
     return (
         <Fragment>
             <div className='navigation'>
