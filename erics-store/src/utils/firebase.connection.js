@@ -11,5 +11,7 @@ const FIREBASECONFIG = {
 };
 
 //  Initialize Firebase and share to all modules
+//  While never directly used, this is the connection to the database
+//  and is required for all other firebase modules to work.
 const FIREBASEAPP = initializeApp(FIREBASECONFIG);
 export default FIREBASEAPP;

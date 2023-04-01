@@ -1,3 +1,6 @@
+// THIS is not a component, it is a utility file but it required for the app to work.
+import { FIREBASEAPP } from './firebase.connection';
+// Do Not Remove the above line. It is required for the app to work.
 import { getFirestore, doc, collection, writeBatch, query, getDocs } from "firebase/firestore";
 
 export const db = getFirestore();
