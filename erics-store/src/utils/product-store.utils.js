@@ -1,5 +1,4 @@
-import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from "firebase/firestore";
-import { FIREBASEAPP } from './firebase.connection';
+import { getFirestore, doc, collection, writeBatch, query, getDocs } from "firebase/firestore";
 
 export const db = getFirestore();
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
