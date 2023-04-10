@@ -22,6 +22,13 @@
         border: 1px solid black;
     }
 
+    &:disabled {
+        background-color: #dedede;
+        color: #4285f4;
+        border: none;
+        cursor: not-allowed;
+    }
+
     &.google-sign-in {
         background-color: #4285f4;
         color: white;
@@ -42,5 +49,30 @@
             color: white;
             border: none;
         }
+    }
+
+    .spinner {
+        margin: 5px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(243, 243, 243, 0.6);
+        border-radius: 50%;
+        border-top-color: #0008ff;
+        animation: spin 1s ease-in-out infinite;
+        -webkit-animation: spin 1s ease-in-out infinite;
+    }
+
+
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }

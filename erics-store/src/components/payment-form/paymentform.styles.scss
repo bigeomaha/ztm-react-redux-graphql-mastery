@@ -1,0 +1,24 @@
+.payment-form-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    min-width: 100%;
+    align-items: center;
+    border: 1px solid #4285f4;
+    border-radius: 5px;
+    box-shadow: 5px 5px #427cd8;
+
+    button {
+        margin-top: 20px;
+        align-items: center;
+    }
+
+    .StripeElement {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        min-width: 350px;
+
+    }
+}
+

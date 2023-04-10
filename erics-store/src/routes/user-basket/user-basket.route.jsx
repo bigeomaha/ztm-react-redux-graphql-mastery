@@ -2,7 +2,7 @@ import './user-basket.styles.scss';
 import { useDispatch, useSelector } from "react-redux";
 import { selectShoppingCartItems, selectShoppingCartTotalPrice } from "../../store/shoppingcart/shopcart.selector";
 import { addItemToCart, subtractItemFromCart, deleteItemFromCart } from "../../store/shoppingcart/shopcart.actions";
-
+import PaymentForm from '../../components/payment-form/paymentform.component';
 
 const _cartItem = (cart_items, item) => {
     const dispatch = useDispatch();
@@ -51,6 +51,8 @@ const UserBasket = () => {
                 <div className="total">
                     Total ${cart_total}
                 </div>
+
+                <PaymentForm />
             </div>
         </div>
     );
