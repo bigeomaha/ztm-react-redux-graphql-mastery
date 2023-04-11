@@ -1,7 +1,12 @@
 
 import './card-list.styles.css';
+import { TMonster } from '../../utils/app.types';
 
-const CardList = ({monsters}) => (
+type MonstersProps = {
+    monsters: Array<TMonster>
+};
+
+const CardList = ({ monsters }: MonstersProps) => (
     <div className='card-list'>
         {monsters.map(monster => {
             const { id, name, email } = monster;

@@ -2,6 +2,9 @@ import { Component } from 'react';
 import './App.css';
 import CardList from './components/card-list/card-list.component';
 import SearchBox from './components/search-box/search-box.component';
+import getData from './utils/data.utils';
+import { ChangeEvent } from 'react';
+import { TMonster } from './utils/app.types';
 
 class App extends Component {
   constructor() {
@@ -13,12 +16,14 @@ class App extends Component {
     };
   }
   componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(users => this.setState({ monsters: users }));
+    const fetchUsers = async () => {
+      const users = await getData<Array<TMonster>>('https://jsonplaceholder.typicode.com/users');
+      this.setState({ monsters: users });
+    };
+    fetchUsers();
   }
 
-  onSearchChange = (event) => {
+  onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const monster_search_string = event.target.value.toLowerCase();
     this.setState(
       () => {
